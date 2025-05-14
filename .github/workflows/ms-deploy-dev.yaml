@@ -1,0 +1,43 @@
+---
+name: CI/CD MS Deploy
+run-name: ms deploy
+
+on:
+  workflow_dispatch:
+    push:
+      branches:
+        - 'fix/*'
+        - 'feat/*'
+        - 'feature/*'
+      paths-ignore:
+        - 'docs/**'
+        - '.github/**'
+        - '.gitignore'
+        - 'LICENSE'
+        - 'README.md'
+
+jobs:
+  setup-env:
+    environment: dev
+    runs-on: ubuntu-latest
+    outputs:
+      ENVIRONMENT: dev
+      AWS_REGION: ${{ vars.AWS_REGION }}
+
+    steps:
+      - name: echo
+        run: |
+          echo "AWS_REGION=${{ vars.AWS_REGION }}"
+
+
+  build-and-push:
+    needs: setup-env
+    uses: edelux/cicd-build-push/.github/workflows/build_push.yaml@main
+    with:
+      AWS_REGION: ${{ needs.setup-env.outputs.AWS_REGION }}
+      ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
+
+    permissions:
+      id-token: write
+      contents: read
+...
