@@ -34,6 +34,7 @@ jobs:
   build-and-push:
     needs: setup-env
     uses: edelux/cicd-build-push/.github/workflows/build_push.yaml@main
+
     with:
       AWS_REGION: ${{ needs.setup-env.outputs.AWS_REGION }}
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
