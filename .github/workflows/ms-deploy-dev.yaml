@@ -1,5 +1,5 @@
 ---
-name: CI/CD MS Deploy
+name: CICD MS Deploy
 run-name: ms deploy
 
 on:
@@ -41,4 +41,3 @@ jobs:
     permissions:
       id-token: write
       contents: read
-...
