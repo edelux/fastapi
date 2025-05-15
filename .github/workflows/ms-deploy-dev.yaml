@@ -46,4 +46,8 @@ jobs:
     uses: edelux/cicd-build-push/.github/workflows/ecs_task_update.yaml@main
     with:
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
+
+    permissions:
+      id-token: write
+      contents: read
 ...

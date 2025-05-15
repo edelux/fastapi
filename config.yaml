@@ -3,7 +3,7 @@ environments:
   dev:
     docker:
       APP: fastapi
-      VERSION: "0.0"
+      VERSION: "0.1"
       registry: ecr
       url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
       platforms: linux/amd64,linux/arm64
