@@ -18,7 +18,7 @@ environments:
       replicas: 2
       domain_name: fastapi.dev.edeluquez.com
       variables:
-        DATABASE: louvre16
+        DATABASE: louvre17
         USERNAME: admin
       secrets:
         PASSWORD: dev/db/fastapi/password
