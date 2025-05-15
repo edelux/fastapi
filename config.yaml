@@ -10,8 +10,8 @@ environments:
       filename: Dockerfile
       filepath: .
       arguments:
-        APP: {{ APP }}
-        VERSION: {{ VERSION }}
+        APP: {{APP}}
+        VERSION: {{VERSION}}
 
     microservice:
       cluster: dev-ecs_cluster
