@@ -1,6 +1,6 @@
 ---
 name: CICD MS Deploy
-run-name: ms deploy
+run-name: MS deploy
 
 on:
   workflow_dispatch:
@@ -23,21 +23,31 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       ENVIRONMENT: dev
-      AWS_REGION: ${{ vars.AWS_REGION }}
 
     steps:
       - name: echo
         run: |
-          echo "AWS_REGION=${{ vars.AWS_REGION }}"
+          echo "ENVIRONMENT=${{ vars.ENVIRONMENT }}"
 
 
   build-and-push:
     needs: setup-env
     uses: edelux/cicd-build-push/.github/workflows/build_push.yaml@main
     with:
-      AWS_REGION: ${{ vars.AWS_REGION }}
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
 
     permissions:
       id-token: write
       contents: read
+
+
+  deploy-update-task:
+    needs: build-and-push
+    uses: edelux/cicd-build-push/.github/workflows/ecs_task_update.yaml@main
+    with:
+      ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
+
+    permissions:
+      id-token: write
+      contents: read
+...

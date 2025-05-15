@@ -2,22 +2,25 @@
 environments:
   dev:
     docker:
+      APP: fastapi
+      VERSION: "0.1"
       registry: ecr
       url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
+      platforms: linux/amd64,linux/arm64
       filename: Dockerfile
       filepath: .
       arguments:
-        APP: golang
-        VERSION: "0.0"
+        APP: "{{ APP }}"
+        VERSION: "{{ VERSION }}"
 
     microservice:
       cluster: dev-ecs_cluster
-      cpu: 128
-      memory: 64
+      cpu: 256
+      memory: 256
       replicas: 2
       domain_name: fastapi.dev.edeluquez.com
       variables:
-        DATABASE: louvre9
+        DATABASE: louvre22
         USERNAME: admin
       secrets:
         PASSWORD: dev/db/fastapi/password
