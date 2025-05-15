@@ -1,6 +1,6 @@
 ---
 name: CICD MS Deploy
-run-name: ms deploy
+run-name: MS deploy
 
 on:
   workflow_dispatch:
@@ -39,3 +39,11 @@ jobs:
     permissions:
       id-token: write
       contents: read
+
+
+  deploy-update-task:
+    needs: build-and-push
+    uses: edelux/cicd-build-push/.github/workflows/ecs_task_update.yaml@main
+    with:
+      ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
+...

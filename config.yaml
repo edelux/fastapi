@@ -10,13 +10,13 @@ environments:
       filename: Dockerfile
       filepath: .
       arguments:
-        APP: {{APP}}
-        VERSION: {{VERSION}}
+        APP: "{{ APP }}"
+        VERSION: "{{ VERSION }}"
 
     microservice:
       cluster: dev-ecs_cluster
-      cpu: 128
-      memory: 64
+      cpu: 256
+      memory: 256
       replicas: 2
       domain_name: fastapi.dev.edeluquez.com
       variables:
