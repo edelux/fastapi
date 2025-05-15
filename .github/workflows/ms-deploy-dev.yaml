@@ -23,19 +23,17 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       ENVIRONMENT: dev
-      AWS_REGION: ${{ vars.AWS_REGION }}
 
     steps:
       - name: echo
         run: |
-          echo "AWS_REGION=${{ vars.AWS_REGION }}"
+          echo "ENVIRONMENT=${{ vars.ENVIRONMENT }}"
 
 
   build-and-push:
     needs: setup-env
     uses: edelux/cicd-build-push/.github/workflows/build_push.yaml@main
     with:
-      AWS_REGION: ${{ vars.AWS_REGION }}
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
 
     permissions:
