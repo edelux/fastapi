@@ -15,12 +15,12 @@ environments:
 
     microservice:
       cluster: dev-ecs_cluster
-      cpu: 256
-      memory: 256
+      cpu: 128
+      memory: 64
       replicas: 2
       domain_name: fastapi.dev.edeluquez.com
       variables:
-        DATABASE: louvre22
+        DATABASE: louvre
         USERNAME: admin
       secrets:
         PASSWORD: dev/db/fastapi/password
