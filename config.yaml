@@ -3,7 +3,7 @@ environments:
   dev:
     docker:
       APP: fastapi
-      VERSION: "0.2"
+      VERSION: "0.3"
       registry: ecr
       url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
       platforms: linux/amd64,linux/arm64
@@ -15,7 +15,7 @@ environments:
 
     microservice:
       cluster: dev-ecs_cluster
-      cpu: 128
+      cpu: 192
       memory: 64
       replicas: 1
       domain_name: fastapi.dev.edeluquez.com
