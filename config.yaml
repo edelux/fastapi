@@ -5,7 +5,7 @@ environments:
       APP: fastapi
       VERSION: "0.1"
       registry: ecr
-      url: 199920436475.dkr.ecr.us-east-1.amazonaws.com
+      url: .dkr.ecr.us-east-1.amazonaws.com
       platforms: linux/amd64,linux/arm64
       filename: Dockerfile
       filepath: .
@@ -14,11 +14,11 @@ environments:
         VERSION: "{{ VERSION }}"
 
     microservice:
-      cluster: dev-ecs_cluster
+      cluster:
       cpu: 128
       memory: 64
-      replicas: 2
-      domain_name: fastapi.dev.edeluquez.com
+      replicas: 1
+      domain_name: fastapi.dev.x.com
       variables:
         DATABASE: louvre
         USERNAME: admin
