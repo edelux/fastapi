@@ -14,7 +14,7 @@ environments:
         VERSION: "{{ VERSION }}"
 
     microservice:
-      cluster:
+      cluster: dev-ecs_cluster
       cpu: 128
       memory: 64
       replicas: 1
