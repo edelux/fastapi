@@ -43,7 +43,7 @@ jobs:
 
   deploy-update-task:
     needs: [setup-env, build-and-push]
-    uses: edelux/cicd-build-push/.github/workflows/ecs_task_update.yaml@main
+    uses: edelux/cicd-ecs/.github/workflows/deploy_and_update_tasks.yaml@main
     with:
       ENVIRONMENT: ${{ needs.setup-env.outputs.ENVIRONMENT }}
 
