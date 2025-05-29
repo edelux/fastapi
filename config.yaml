@@ -2,10 +2,10 @@
 environments:
   dev:
     docker:
-      APP: fastapi
+      APP: app
       VERSION: "0.1"
       registry: ecr
-      url: .dkr.ecr.us-east-1.amazonaws.com
+      url: .dkr.ecr.us-east-1.amazonaws.com/project
       platforms: linux/amd64,linux/arm64
       filename: Dockerfile
       filepath: .
@@ -14,7 +14,7 @@ environments:
         VERSION: "{{ VERSION }}"
 
     microservice:
-      cluster:
+      cluster: name
       cpu: 128
       memory: 64
       replicas: 1
@@ -23,6 +23,6 @@ environments:
         DATABASE: louvre
         USERNAME: admin
       secrets:
-        PASSWORD: dev/db/fastapi/password
-        ENDPOINT: dev/db/fastapi/endpoint
+        PASSWORD: arn:aws:secretsmanager:<region>:<account>:secret:dev/db/app/password-kg6Fjj
+        ENDPOINT: arn:aws:secretsmanager:<region>:<account>:secret:dev/db/app/endpoint-d6lQNT
 ...
